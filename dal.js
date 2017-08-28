@@ -1,16 +1,16 @@
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017/robots';
 let robots = [];
-
-function getAllDocs(err, db){
-  console.log(err);
-  const collection = db.collection('users')
-  let documents = [];
-  collection.find({}).toArray(function(err, docs){
-    robots = docs;
-    db.close
-  })
-}
+//
+// function getAllDocs(err, db){
+//   console.log(err);
+//   const collection = db.collection('users')
+//   let documents = [];
+//   collection.find({}).toArray(function(err, docs){
+//     robots = docs;
+//     db.close
+//   })
+// }
 
 function getAllRobots (){
   return new Promise ((resolve, reject) =>{
@@ -26,18 +26,18 @@ function getAllRobots (){
   })
 }
 
-function connectToMongodb(url, cb){
-  MongoClient.connect(url, cb)
-}
-
-function getRobots(){
-  connectToMongodb(url, getAllDocs())
-    return robots;
-  }
+// function connectToMongodb(url, cb){
+//   MongoClient.connect(url, cb)
+// }
+//
+// function getRobots(){
+//   connectToMongodb(url, getAllDocs)
+//     return robots;
+//   }
 
   module.exports = {
     getAllRobots: getAllRobots,
-    getRobots: getRobots
+    // getRobots: getRobots
   }
 
 

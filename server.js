@@ -21,11 +21,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // all bots
 app.get('/', function(request, response){
-    const bots = robotDal.getRobots();
-    console.log(bots);
-  response.render('robots', {
-    robots: bots
-  })
+    robotDal.getAllRobots().then(function (bots){
+      response.render("robots", { robots: bots})
+      console.log(bots);
+    });
 })
 //
 // // 1 bot profile
